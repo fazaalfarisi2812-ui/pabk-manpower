@@ -1,0 +1,5 @@
+from .doctype.manpower_contract.manpower_contract import ManpowerContract
+from .doctype.manpower_site.manpower_site import ManpowerSite
+from .doctype.manpower_requisition.manpower_requisition import ManpowerRequisition
+from .doctype.manpower_shift_assignment.manpower_shift_assignment import ManpowerShiftAssignment
+

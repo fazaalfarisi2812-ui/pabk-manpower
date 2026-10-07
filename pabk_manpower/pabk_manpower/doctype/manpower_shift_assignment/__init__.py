@@ -1,0 +1,2 @@
+from .manpower_shift_assignment import ManpowerShiftAssignment
+

@@ -1,0 +1,147 @@
+{
+    "doctype": "DocType",
+    "name": "Manpower Shift Assignment",
+    "module": "PABK Manpower",
+    "custom": 0,
+    "istable": 0,
+    "issingle": 0,
+    "quick_entry": 0,
+    "track_changes": 1,
+    "title_field": "employee",
+    "search_fields": "employee,site,contract,shift_type",
+    "field_order": [
+        "section_break_1",
+        "employee",
+        "employee_name",
+        "contract",
+        "site",
+        "section_break_2",
+        "shift_type",
+        "billing_rate",
+        "cost_rate",
+        "start_date",
+        "end_date",
+        "section_break_3",
+        "status",
+        "notes"
+    ],
+    "fields": [
+        {
+            "fieldname": "section_break_1",
+            "fieldtype": "Section Break",
+            "label": "Assignment Details"
+        },
+        {
+            "fieldname": "employee",
+            "fieldtype": "Link",
+            "label": "Employee",
+            "options": "Employee",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "employee_name",
+            "fieldtype": "Data",
+            "label": "Employee Name",
+            "fetch_from": "employee.employee_name",
+            "read_only": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "contract",
+            "fieldtype": "Link",
+            "label": "Manpower Contract",
+            "options": "Manpower Contract",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "site",
+            "fieldtype": "Link",
+            "label": "Site",
+            "options": "Manpower Site",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "section_break_2",
+            "fieldtype": "Section Break",
+            "label": "Shift Details"
+        },
+        {
+            "fieldname": "shift_type",
+            "fieldtype": "Link",
+            "label": "Shift Type",
+            "options": "Shift Type",
+            "reqd": 1
+        },
+        {
+            "fieldname": "billing_rate",
+            "fieldtype": "Currency",
+            "label": "Billing Rate (per hour)",
+            "description": "Rate charged to client per hour"
+        },
+        {
+            "fieldname": "cost_rate",
+            "fieldtype": "Currency",
+            "label": "Cost Rate (per hour)",
+            "description": "Employee cost per hour (salary + benefits)"
+        },
+        {
+            "fieldname": "start_date",
+            "fieldtype": "Date",
+            "label": "Start Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "end_date",
+            "fieldtype": "Date",
+            "label": "End Date"
+        },
+        {
+            "fieldname": "section_break_3",
+            "fieldtype": "Section Break",
+            "label": "Status"
+        },
+        {
+            "fieldname": "status",
+            "fieldtype": "Select",
+            "label": "Status",
+            "options": "Active\nInactive\nEnded\nReplaced",
+            "default": "Active",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "notes",
+            "fieldtype": "Text",
+            "label": "Notes"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "report": 1,
+            "export": 1
+        },
+        {
+            "role": "HR Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "report": 1
+        },
+        {
+            "role": "Sales Manager",
+            "read": 1,
+            "report": 1
+        }
+    ],
+    "naming_series": "MSA-.YYYY.-",
+    "autoname": "naming_series:",
+    "sort_field": "modified",
+    "sort_order": "DESC"
+}
