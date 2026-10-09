@@ -1,0 +1,21 @@
+{
+    "doctype": "Dashboard Chart",
+    "name": "Headcount Plan vs Actual",
+    "module": "PABK Manpower",
+    "chart_name": "Headcount Plan vs Actual",
+    "chart_type": "Grouped Bar",
+    "document_type": "Headcount Plan",
+    "source": "Headcount Plan",
+    "x_field": "department",
+    "y_fields": [
+        "planned_headcount",
+        "actual_headcount"
+    ],
+    "filters_json": "{}",
+    "colors": ["#36a2eb", "#4bc0c0"],
+    "is_public": 1,
+    "is_standard": 1,
+    "timeseries": 0,
+    "refresh_interval": 0,
+    "last_synced_on": "2024-10-06"
+}

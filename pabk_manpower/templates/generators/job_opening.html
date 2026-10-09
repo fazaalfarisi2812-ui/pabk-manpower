@@ -1,0 +1,110 @@
+{% extends "templates/web.html" %}
+{% block title %} {{ job_title }} | {{ company }} {% endblock title %}
+
+{% block page_content %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  "title": "{{ job_title }}",
+  "description": "{{ description | striptags }}",
+  "datePosted": "{{ posted_on }}",
+  "validThrough": "{{ closes_on if closes_on else '' }}",
+  "employmentType": "{{ employment_type }}",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "{{ company }}",
+    "sameAs": "{{ frappe.utils.get_url() }}"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ location }}",
+      "addressRegion": "ID",
+      "postalCode": "",
+      "streetAddress": ""
+    }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "{{ currency }}",
+    "value": {
+      "@type": "QuantitativeValue",
+      "value": {{ lower_range if lower_range else 0 }},
+      "unitText": "{{ salary_per.upper() if salary_per else 'MONTH' }}"
+    }
+  }
+}
+</script>
+
+<div class="py-12">
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb bg-transparent p-0 mb-8">
+	    <li class="breadcrumb-item"><a href="/jobs">{{ _("Lowongan") }}</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">{{ job_title }}</li>
+	  </ol>
+	</nav>
+
+	<div class="row">
+		<div class="col-md-9 mb-8">
+			<h1 class="mt-0 mb-2 font-weight-bold">{{ job_title }}</h1>
+			<div class="flex align-items-center text-muted">
+				<span class="font-weight-bold">{{ company }}</span>
+				{{ " · " }} {{ posted_on }}
+			</div>
+		</div>
+		<div class="col-md-3">
+			{%- if status == "Open" -%}
+				<a class="btn btn-primary btn-lg btn-block shadow-sm" href="/job-application/new?job_title={{ name }}">
+					{{ _("Lamar Sekarang") }}
+				</a>
+			{%- else -%}
+				<div class="py-3 px-4 text-center bg-light font-weight-bold rounded">{{ _("Ditutup") }}</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<hr class="my-10" />
+
+	<div class="row mb-10">
+		{%- if location -%}
+		<div class="col-6 col-md-3 mb-6">
+			<small class="text-muted text-uppercase d-block mb-1">{{ _("Lokasi") }}</small>
+			<div class="font-weight-bold">{{ location }}</div>
+		</div>
+		{% endif %}
+		{%- if department -%}
+		<div class="col-6 col-md-3 mb-6">
+			<small class="text-muted text-uppercase d-block mb-1">{{ _("Departemen") }}</small>
+			<div class="font-weight-bold">{{ department }}</div>
+		</div>
+		{% endif %}
+		{%- if employment_type -%}
+		<div class="col-6 col-md-3 mb-6">
+			<small class="text-muted text-uppercase d-block mb-1">{{ _("Tipe") }}</small>
+			<div class="font-weight-bold">{{ employment_type }}</div>
+		</div>
+		{% endif %}
+		{%- if closes_on -%}
+		<div class="col-6 col-md-3 mb-6">
+			<small class="text-muted text-uppercase d-block mb-1">{{ _("Batas Akhir") }}</small>
+			<div class="font-weight-bold text-danger">{{ frappe.utils.format_date(closes_on, "d MMM, YYYY") }}</div>
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="job-description border p-8 rounded bg-white shadow-sm">
+		<h5 class="mb-6 font-weight-bold">{{ _("Deskripsi Pekerjaan") }}</h5>
+		{{ description }}
+	</div>
+
+	<div class="mt-12 text-center d-md-none">
+		{%- if status == "Open" -%}
+			<a class="btn btn-primary btn-lg btn-block" href="/job-application/new?job_title={{ name }}">
+				{{ _("Lamar Sekarang") }}
+			</a>
+		{% endif %}
+	</div>
+</div>
+{% endblock page_content %}

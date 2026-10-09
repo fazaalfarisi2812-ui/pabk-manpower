@@ -1,0 +1,205 @@
+{
+  "name": "BPJS Compliance",
+  "module": "PABK Manpower",
+  "custom": 1,
+  "istable": 0,
+  "issingle": 0,
+  "track_changes": 1,
+  "track_seen": 1,
+  "track_views": 1,
+  "quick_entry": 1,
+  "field_order": [
+    "employee",
+    "contract",
+    "month",
+    "bpjs_kesehatan_employee_share",
+    "bpjs_kesehatan_employer_share",
+    "bpjs_ketenagakerjaan_jht_employee",
+    "bpjs_ketenagakerjaan_jht_employer",
+    "bpjs_ketenagakerjaan_jp_employee",
+    "bpjs_ketenagakerjaan_jp_employer",
+    "bpjs_ketenagakerjaan_jkk_employer",
+    "bpjs_ketenagakerjaan_jkm_employer",
+    "total_employee_share",
+    "total_employer_share",
+    "total_bpjs",
+    "status",
+    "payment_date",
+    "payment_reference",
+    "notes"
+  ],
+  "fields": [
+    {
+      "fieldname": "employee",
+      "fieldtype": "Link",
+      "label": "Employee",
+      "options": "Employee",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "contract",
+      "fieldtype": "Link",
+      "label": "Manpower Contract",
+      "options": "Manpower Contract",
+      "fetch_from": "employee.manpower_contract",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "month",
+      "fieldtype": "Select",
+      "label": "Month",
+      "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "bpjs_kesehatan_employee_share",
+      "fieldtype": "Currency",
+      "label": "BPJS Kesehatan - Employee Share (1%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_kesehatan_employer_share",
+      "fieldtype": "Currency",
+      "label": "BPJS Kesehatan - Employer Share (4%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jht_employee",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JHT - Employee (2%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jht_employer",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JHT - Employer (3.7%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jp_employee",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JP - Employee (1%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jp_employer",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JP - Employer (2%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jkk_employer",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JKK - Employer (0.24%-1.74%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "bpjs_ketenagakerjaan_jkm_employer",
+      "fieldtype": "Currency",
+      "label": "BPJS Ketenagakerjaan JKM - Employer (0.3%)",
+      "options": "IDR",
+      "precision": 0
+    },
+    {
+      "fieldname": "total_employee_share",
+      "fieldtype": "Currency",
+      "label": "Total Employee Share",
+      "options": "IDR",
+      "read_only": 1,
+      "precision": 0
+    },
+    {
+      "fieldname": "total_employer_share",
+      "fieldtype": "Currency",
+      "label": "Total Employer Share",
+      "options": "IDR",
+      "read_only": 1,
+      "precision": 0
+    },
+    {
+      "fieldname": "total_bpjs",
+      "fieldtype": "Currency",
+      "label": "Total BPJS",
+      "options": "IDR",
+      "read_only": 1,
+      "precision": 0
+    },
+    {
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "label": "Status",
+      "options": "Draft\nCalculated\nSubmitted\nPaid",
+      "default": "Draft",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "payment_date",
+      "fieldtype": "Date",
+      "label": "Payment Date"
+    },
+    {
+      "fieldname": "payment_reference",
+      "fieldtype": "Data",
+      "label": "Payment Reference"
+    },
+    {
+      "fieldname": "notes",
+      "fieldtype": "Small Text",
+      "label": "Notes"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "submit": 1,
+      "cancel": 1,
+      "report": 1
+    },
+    {
+      "role": "HR Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "submit": 1,
+      "cancel": 1,
+      "report": 1
+    },
+    {
+      "role": "Manpower Staff",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1
+    }
+  ],
+  "indexes": [
+    {
+      "fieldname": "employee"
+    },
+    {
+      "fieldname": "contract"
+    },
+    {
+      "fieldname": "month"
+    },
+    {
+      "fieldname": "status"
+    }
+  ]
+}

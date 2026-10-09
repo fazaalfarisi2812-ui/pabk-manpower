@@ -1,0 +1,65 @@
+{
+    "doctype": "Workspace",
+    "name": "Headcount Planning",
+    "module": "PABK Manpower",
+    "label": "Headcount Planning",
+    "icon": "users",
+    "color": "#36a2eb",
+    "is_standard": 1,
+    "is_public": 1,
+    "sequence_id": 10,
+    "charts": [
+        {
+            "chart_name": "Headcount Plan vs Actual",
+            "label": "Headcount Plan vs Actual"
+        },
+        {
+            "chart_name": "Headcount Cost Variance",
+            "label": "Headcount Cost Variance"
+        }
+    ],
+    "number_cards": [
+        {
+            "number_card_name": "Total Headcount Variance",
+            "label": "Total Headcount Variance"
+        }
+    ],
+    "shortcuts": [
+        {
+            "label": "New Headcount Plan",
+            "type": "DocType",
+            "link_to": "Headcount Plan",
+            "format": "New"
+        },
+        {
+            "label": "Manpower Requisitions",
+            "type": "DocType",
+            "link_to": "Manpower Requisition"
+        },
+        {
+            "label": "Job Openings",
+            "type": "DocType",
+            "link_to": "Job Opening"
+        }
+    ],
+    "links": [
+        {
+            "label": "Headcount Plans",
+            "type": "DocType",
+            "link_to": "Headcount Plan",
+            "icon": "users"
+        },
+        {
+            "label": "Manpower Requisitions",
+            "type": "DocType",
+            "link_to": "Manpower Requisition",
+            "icon": "clipboard-list"
+        },
+        {
+            "label": "Employees",
+            "type": "DocType",
+            "link_to": "Employee",
+            "icon": "id-badge"
+        }
+    ]
+}

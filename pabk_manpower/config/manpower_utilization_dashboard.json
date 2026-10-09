@@ -1,0 +1,108 @@
+{
+  "name": "Manpower Utilization",
+  "module": "PABK Manpower",
+  "doctype": "Dashboard",
+  "is_standard": 1,
+  "is_default": 0,
+  "charts": [
+    {
+      "chart_name": "Deployed vs Contracted Headcount",
+      "chart_type": "Bar",
+      "timeseries": 0,
+      "filters_json": "{}",
+      "report_type": "Report",
+      "report_name": "Manpower Deployed vs Contracted"
+    },
+    {
+      "chart_name": "Billing vs Cost per Site",
+      "chart_type": "Bar",
+      "timeseries": 0,
+      "filters_json": "{}",
+      "report_type": "Report",
+      "report_name": "Site Billing vs Cost"
+    },
+    {
+      "chart_name": "Active Contracts",
+      "chart_type": "Number Card",
+      "filters_json": "{\"status\": \"Active\"}",
+      "report_type": "DocType",
+      "document_type": "Manpower Contract"
+    },
+    {
+      "chart_name": "Open Requisitions",
+      "chart_type": "Number Card",
+      "filters_json": "{\"status\": \"Open\"}",
+      "report_type": "DocType",
+      "document_type": "Manpower Requisition"
+    },
+    {
+      "chart_name": "Utilization Trend (30 Days)",
+      "chart_type": "Line",
+      "timeseries": 1,
+      "filters_json": "{}",
+      "report_type": "Report",
+      "report_name": "Manpower Utilization Trend"
+    }
+  ],
+  "number_cards": [
+    {
+      "card_name": "Total Deployed",
+      "label": "Total Deployed",
+      "filters_json": "{\"status\": \"Active\"}",
+      "document_type": "Manpower Shift Assignment",
+      "function": "Count",
+      "value_field": "name"
+    },
+    {
+      "card_name": "Total Contracted",
+      "label": "Total Contracted",
+      "filters_json": "{\"status\": \"Active\"}",
+      "document_type": "Manpower Contract",
+      "function": "Sum",
+      "value_field": "headcount"
+    },
+    {
+      "card_name": "Utilization %",
+      "label": "Utilization %",
+      "filters_json": "{}",
+      "document_type": "Manpower Contract",
+      "function": "Custom",
+      "value_field": "utilization_pct"
+    },
+    {
+      "card_name": "Billing vs Cost",
+      "label": "Billing vs Cost (IDR)",
+      "filters_json": "{}",
+      "document_type": "Manpower Contract",
+      "function": "Custom",
+      "value_field": "billing_vs_cost"
+    }
+  ],
+  "shortcuts": [
+    {
+      "label": "New Contract",
+      "type": "DocType",
+      "name": "Manpower Contract",
+      "action": "new"
+    },
+    {
+      "label": "New Requisition",
+      "type": "DocType",
+      "name": "Manpower Requisition",
+      "action": "new"
+    },
+    {
+      "label": "New Site",
+      "type": "DocType",
+      "name": "Manpower Site",
+      "action": "new"
+    },
+    {
+      "label": "Shift Assignments",
+      "type": "DocType",
+      "name": "Manpower Shift Assignment",
+      "action": "list"
+    }
+  ],
+  "dashboard_name": "Manpower Utilization"
+}
